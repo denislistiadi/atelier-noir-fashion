@@ -128,3 +128,11 @@ npm run push -- --store your-store.myshopify.com --theme <THEME_ID> --allow-live
 
 **Shopify Theme Developer & Technical Liquid Specialist**  
 Available for custom Shopify Plus theme development, headless architectures, and e-commerce CRO audits.
+
+---
+
+## 📄 License & Disclaimer
+
+- **Theme Engine:** Built upon [Shopify Dawn](https://github.com/Shopify/dawn), distributed under the [Shopify Theme License](LICENSE.md). Copyright (c) 2021-present Shopify Inc. You are free to fork, customize, and distribute for Shopify stores in accordance with the MIT license terms.
+- **Media & Photography:** All photography assets are sourced from [Unsplash](https://unsplash.com) and utilized under the free [Unsplash License](https://unsplash.com/license) (free for non-commercial and commercial use).
+- **Concept Showcase:** *Atelier Noir* is a concept showcase created exclusively for developer portfolio and educational purposes. Editorial press references (e.g. Vogue, GQ) are utilized solely as aesthetic design placeholders.
