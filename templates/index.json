@@ -1,75 +1,163 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "announcement_marquee": {
+      "type": "announcement-marquee",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "item_1": {
+          "type": "announcement_item",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "text": "ATELIER NOIR — AUTUMN / WINTER 2026 COLLECTION NOW LIVE",
+            "icon": "sparkle"
           }
         },
-        "button": {
-          "type": "buttons",
+        "item_2": {
+          "type": "announcement_item",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "COMPLIMENTARY WORLDWIDE EXPRESS SHIPPING ON ORDERS OVER ",
+            "icon": "shipping"
+          }
+        },
+        "item_3": {
+          "type": "announcement_item",
+          "settings": {
+            "text": "SUSTAINABLY CRAFTED WITH 100% ORGANIC HEAVYWEIGHT COTTON",
+            "icon": "sparkle"
+          }
+        },
+        "item_4": {
+          "type": "announcement_item",
+          "settings": {
+            "text": "LIMITED RUN // 150 PIECES PER SILHOUETTE // NO RESTOCKS",
+            "icon": "fire"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "direction": "left",
+        "speed": 24,
+        "pause_on_hover": true,
+        "show_separator": true,
+        "font_size": 13,
+        "font_weight": "500",
+        "text_transform": "uppercase",
+        "letter_spacing": 1.5,
+        "item_spacing": 32,
+        "bg_color": "#0d0d0d",
+        "text_color": "#ffffff",
+        "border_thickness": 1,
+        "border_color": "#262626",
+        "padding_top": 12,
+        "padding_bottom": 12
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "fashion_hero": {
+      "type": "fashion-hero",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "image_brightness": 80,
+        "tagline": "EDITION 04 — AUTUMN / WINTER 2026",
+        "heading": "ARCHITECTURAL SILHOUETTES & STRUCTURAL DRAPING",
+        "subtext": "Meticulously crafted from 480GSM Japanese loopback cotton and structured double-faced wool. Engineered for modern brutalist elegance.",
+        "text_align": "center",
+        "button_label_1": "EXPLORE COLLECTION",
+        "button_link_1": "#curated-fashion-grid",
+        "button_label_2": "VIEW LOOKBOOK",
+        "button_link_2": "#editorial-spotlight"
+      }
+    },
+    "fashion_ethos": {
+      "type": "fashion-ethos",
+      "settings": {
+        "subtitle": "THE ATELIER PHILOSOPHY",
+        "heading": "Uncompromising Material Purity",
+        "bg_color": "#0c0c0c",
+        "text_color": "#ffffff",
+        "accent_color": "#ffffff",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "curated_fashion_grid": {
+      "type": "fashion-product-grid",
+      "settings": {
+        "tagline": "CURATED APPAREL // AUTUMN / WINTER 2026",
+        "heading": "Core Wardrobe Silhouettes",
+        "bg_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "fashion_press": {
+      "type": "fashion-press",
+      "settings": {
+        "bg_color": "#fafafa",
+        "text_color": "#121212",
+        "padding_top": 60,
+        "padding_bottom": 72
+      }
+    },
+    "editorial_spotlight": {
+      "type": "editorial-spotlight",
+      "blocks": {
+        "garment_1": {
+          "type": "garment",
+          "settings": {
+            "category": "520GSM VIRGIN WOOL",
+            "title": "Oversized Double-Breasted Wool Trench",
+            "price": ".00",
+            "url": "/products/oversized-double-breasted-wool-trench",
+            "image_url": "https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=200&auto=format&fit=crop"
+          }
+        },
+        "garment_2": {
+          "type": "garment",
+          "settings": {
+            "category": "JAPANESE GABARDINE TWILL",
+            "title": "Pleated Architectural Wide-Leg Trouser",
+            "price": ".00",
+            "url": "/products/pleated-architectural-wide-leg-trouser",
+            "image_url": "https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=200&auto=format&fit=crop"
+          }
+        },
+        "garment_3": {
+          "type": "garment",
+          "settings": {
+            "category": "FULL-GRAIN TUSCAN CALFSKIN",
+            "title": "Artisanal Box Calf Crossbody Bag",
+            "price": ".00",
+            "url": "/products/artisanal-box-calf-crossbody-bag",
+            "image_url": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=200&auto=format&fit=crop"
+          }
+        }
+      },
+      "block_order": [
+        "garment_1",
+        "garment_2",
+        "garment_3"
+      ],
+      "settings": {
+        "subtitle": "EDITORIAL SPOTLIGHT",
+        "heading": "The Monolith Silhouette",
+        "description": "An architectural dialogue between heavyweight Italian virgin wool and fluid Japanese gabardine. Cut with deliberate dropped proportions for a statuesque runway break.",
+        "image_tagline": "LOOK 04 // RUNWAY EDITORIAL",
+        "bg_color": "#ffffff",
+        "text_color": "#121212",
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "announcement_marquee",
+    "fashion_hero",
+    "fashion_ethos",
+    "curated_fashion_grid",
+    "editorial_spotlight",
+    "fashion_press"
   ]
 }

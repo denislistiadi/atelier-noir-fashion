@@ -1,0 +1,454 @@
+{%- style -%}
+  .fashion-contact-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+  }
+
+  .fashion-contact-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .fashion-contact-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 5rem;
+  }
+
+  .fashion-contact-tag {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #888888;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 600;
+  }
+
+  .fashion-contact-title {
+    font-size: clamp(2.8rem, 4vw, 4.2rem);
+    font-weight: 700;
+    margin: 0 0 1.2rem;
+    letter-spacing: -0.8px;
+    color: inherit;
+    text-transform: uppercase;
+  }
+
+  .fashion-contact-desc {
+    font-size: 1.5rem;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .fashion-contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  /* Left Column: Concierge Info */
+  .concierge-info-box {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .concierge-block {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1.8rem;
+  }
+
+  .concierge-block-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #121212;
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .concierge-block-text {
+    font-size: 1.4rem;
+    color: #555555;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .concierge-link {
+    color: #121212;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .concierge-badges-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-top: 1rem;
+  }
+
+  .concierge-badge-card {
+    background: #f7f7f7;
+    padding: 1.4rem;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: #333333;
+  }
+
+  .concierge-badge-card strong {
+    display: block;
+    color: #121212;
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  /* Right Column: Contact Form */
+  .fashion-form-wrap {
+    background: #fcfcfc;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 3.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  }
+
+  .fashion-form-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 0.8rem;
+    letter-spacing: -0.3px;
+    color: #121212;
+    text-transform: uppercase;
+  }
+
+  .fashion-form-subtext {
+    font-size: 1.3rem;
+    color: #777777;
+    margin: 0 0 2.5rem;
+  }
+
+  .fashion-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .fashion-input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+  }
+
+  .fashion-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #444444;
+  }
+
+  .fashion-input,
+  .fashion-select,
+  .fashion-textarea {
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    background: #ffffff;
+    font-size: 1.4rem;
+    color: #121212;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+
+  .fashion-input:focus,
+  .fashion-select:focus,
+  .fashion-textarea:focus {
+    border-color: #121212;
+    box-shadow: 0 0 0 1px #121212;
+  }
+
+  .fashion-textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  .fashion-btn-submit {
+    display: block;
+    width: 100%;
+    padding: 1.6rem;
+    background: #121212;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .fashion-btn-submit:hover {
+    background: #333333;
+  }
+
+  .form-status-message {
+    padding: 1.2rem 1.6rem;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+  }
+
+  .form-status-message--success {
+    background: #eef7ee;
+    color: #1e6b24;
+    border: 1px solid #c2e2c4;
+  }
+
+  .form-status-message--error {
+    background: #fdf2f2;
+    color: #b3261e;
+    border: 1px solid #f8c8c8;
+  }
+
+  @media screen and (max-width: 989px) {
+    .fashion-contact-layout {
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+    }
+    .fashion-form-wrap {
+      padding: 2.5rem 1.8rem;
+    }
+    .fashion-input-row {
+      grid-template-columns: 1fr;
+      gap: 1.8rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="fashion-contact-{{ section.id }}" role="region" aria-label="Contact Concierge">
+  <div class="fashion-contact-container">
+    <div class="fashion-contact-header">
+      <span class="fashion-contact-tag">{{ section.settings.subtitle | default: 'CLIENT CONCIERGE // GLOBAL ATELIERS' }}</span>
+      <h1 class="fashion-contact-title">{{ section.settings.heading | default: 'Concierge & Showrooms' }}</h1>
+      <p class="fashion-contact-desc">
+        Our digital concierge and private showroom stylists are available to assist with bespoke appointments, order inquiries, and tailored sizing consultations.
+      </p>
+    </div>
+
+    <div class="fashion-contact-layout">
+      
+      {%- comment -%} Left Column: Showrooms & Direct Contacts {%- endcomment -%}
+      <div class="concierge-info-box">
+        
+        <div class="concierge-block" style="border-top: none; padding-top: 0;">
+          <h2 class="concierge-block-title">📍 Paris Flagship Showroom</h2>
+          <p class="concierge-block-text">
+            14 Rue Saint-Honoré, 75001 Paris, France<br>
+            <em>Private styling sessions available by appointment only.</em>
+          </p>
+        </div>
+
+        <div class="concierge-block">
+          <h2 class="concierge-block-title">📍 Tokyo Design Studio</h2>
+          <p class="concierge-block-text">
+            5-7-22 Minamiaoyama, Minato-ku, Tokyo 107-0062<br>
+            <em>By appointment with our master pattern team.</em>
+          </p>
+        </div>
+
+        <div class="concierge-block">
+          <h2 class="concierge-block-title">✉ Direct Electronic Inquiries</h2>
+          <p class="concierge-block-text">
+            Client Concierge: <a href="mailto:concierge@atelier-noir.com" class="concierge-link">concierge@atelier-noir.com</a><br>
+            Press & Editorial Loans: <a href="mailto:press@atelier-noir.com" class="concierge-link">press@atelier-noir.com</a><br>
+            Wholesale Partnerships: <a href="mailto:showroom@atelier-noir.com" class="concierge-link">showroom@atelier-noir.com</a>
+          </p>
+        </div>
+
+        <div class="concierge-block">
+          <h2 class="concierge-block-title">⏰ Operating Hours</h2>
+          <p class="concierge-block-text">
+            Monday – Saturday: 10:00 – 19:00 CET (Paris Time)<br>
+            Response window: Within 4 business hours.
+          </p>
+        </div>
+
+        <div class="concierge-badges-grid">
+          <div class="concierge-badge-card">
+            <strong>Bespoke Alterations</strong>
+            Complimentary hem adjustments for all tailored trousers.
+          </div>
+          <div class="concierge-badge-card">
+            <strong>White-Glove Courier</strong>
+            Direct DHL/FedEx Express with real-time signature dispatch.
+          </div>
+        </div>
+
+      </div>
+
+      {%- comment -%} Right Column: Native Shopify Contact Form {%- endcomment -%}
+      <div class="fashion-form-wrap">
+        <h2 class="fashion-form-heading">Send A Dispatch</h2>
+        <p class="fashion-form-subtext">Please fill out the form below. An Atelier concierge will respond to your inquiry promptly.</p>
+
+        {%- form 'contact', id: 'ContactForm', class: 'fashion-contact-form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="form-status-message form-status-message--success" tabindex="-1" autofocus>
+              ✓ Thank you for reaching out. Your message has been received by our Atelier Concierge team.
+            </div>
+          {%- elsif form.errors -%}
+            <div class="form-status-message form-status-message--error" tabindex="-1" autofocus>
+              ✕ Please check your inputs: {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <div class="fashion-input-row">
+            <div class="fashion-input-group">
+              <label class="fashion-label" for="ContactForm-name">Full Name *</label>
+              <input
+                type="text"
+                id="ContactForm-name"
+                name="contact[name]"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                class="fashion-input"
+                placeholder="e.g. Denis Listiadi"
+                required
+              >
+            </div>
+
+            <div class="fashion-input-group">
+              <label class="fashion-label" for="ContactForm-email">Email Address *</label>
+              <input
+                type="email"
+                id="ContactForm-email"
+                name="contact[email]"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                class="fashion-input"
+                placeholder="client@domain.com"
+                spellcheck="false"
+                autocomplete="email"
+                autocapitalize="off"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="fashion-input-row">
+            <div class="fashion-input-group">
+              <label class="fashion-label" for="ContactForm-phone">Telephone (Optional)</label>
+              <input
+                type="tel"
+                id="ContactForm-phone"
+                name="contact[phone]"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                class="fashion-input"
+                placeholder="+62 812..."
+              >
+            </div>
+
+            <div class="fashion-input-group">
+              <label class="fashion-label" for="ContactForm-inquiry-type">Inquiry Topic</label>
+              <select id="ContactForm-inquiry-type" name="contact[Inquiry Type]" class="fashion-select">
+                <option value="Private Showroom Appointment">Private Showroom Appointment</option>
+                <option value="Order Status & Express Tracking">Order Status & Express Tracking</option>
+                <option value="Garment Sizing & Tailoring Consultation">Garment Sizing & Tailoring Consultation</option>
+                <option value="Press & Editorial Loans">Press & Editorial Loans</option>
+                <option value="General Inquiries">General Inquiries</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fashion-input-group">
+            <label class="fashion-label" for="ContactForm-body">Inquiry Details *</label>
+            <textarea
+              id="ContactForm-body"
+              name="contact[body]"
+              rows="6"
+              class="fashion-textarea"
+              placeholder="Please provide details regarding your inquiry or appointment preference..."
+              required
+            >{{ form.body }}</textarea>
+          </div>
+
+          <button type="submit" class="fashion-btn-submit">
+            Transmit Inquiry →
+          </button>
+        {%- endform -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fashion Concierge",
+  "tag": "section",
+  "class": "section-fashion-contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "CLIENT CONCIERGE // GLOBAL ATELIERS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Concierge & Showrooms"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Concierge & Contact"
+    }
+  ]
+}
+{% endschema %}

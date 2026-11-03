@@ -4,12 +4,38 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "blocks": {},
-      "block_order": [],
+      "blocks": {
+        "about_brand": {
+          "type": "text",
+          "settings": {
+            "heading": "ATELIER NOIR",
+            "subtext": "<p>Independent luxury fashion house. Architectural silhouettes, custom-milled natural textiles, and hand-finished European tailoring.</p>"
+          }
+        },
+        "menu_collections": {
+          "type": "link_list",
+          "settings": {
+            "heading": "COLLECTIONS",
+            "menu": "main-menu"
+          }
+        },
+        "menu_service": {
+          "type": "text",
+          "settings": {
+            "heading": "CLIENT CONCIERGE",
+            "subtext": "<p>Private Styling<br/>Worldwide Express Shipping<br/>Bespoke Alterations<br/>care@atelier-noir.com</p>"
+          }
+        }
+      },
+      "block_order": [
+        "about_brand",
+        "menu_collections",
+        "menu_service"
+      ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "newsletter_enable": true,
-        "newsletter_heading": "Subscribe to our emails",
+        "newsletter_heading": "RECEIVE INVITATIONS TO PRIVATE DROPS",
         "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": true,

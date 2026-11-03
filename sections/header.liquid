@@ -101,6 +101,18 @@
 </style>
 
 {%- style -%}
+  .atelier-brand-logo {
+    font-family: inherit;
+    font-weight: 800 !important;
+    letter-spacing: 3px !important;
+    font-size: 2.2rem !important;
+    text-transform: uppercase !important;
+    color: #121212 !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+  }
+
   .header {
     padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
   }
@@ -205,7 +217,7 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="h2 atelier-brand-logo">ATELIER NOIR</span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}
@@ -248,7 +260,7 @@
             }}
           </div>
         {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+          <span class="h2 atelier-brand-logo">ATELIER NOIR</span>
         {%- endif -%}
       </a>
       {%- if request.page_type == 'index' -%}

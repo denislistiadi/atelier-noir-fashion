@@ -1,0 +1,177 @@
+{%- style -%}
+  .fashion-ethos-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    border-top: 1px solid #1f1f1f;
+    border-bottom: 1px solid #1f1f1f;
+  }
+
+  .fashion-ethos-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .fashion-ethos-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 5rem;
+  }
+
+  .fashion-ethos-subtitle {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #999999;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .fashion-ethos-title {
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+    font-weight: 700;
+    margin: 0 0 1.2rem;
+    letter-spacing: -0.5px;
+    color: inherit;
+    text-transform: uppercase;
+  }
+
+  .fashion-ethos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .fashion-ethos-item {
+    border-top: 2px solid {{ section.settings.accent_color }};
+    padding-top: 2rem;
+  }
+
+  .fashion-ethos-num {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: {{ section.settings.accent_color }};
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .fashion-ethos-item-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    margin: 0 0 1rem;
+    color: inherit;
+    text-transform: uppercase;
+  }
+
+  .fashion-ethos-item-desc {
+    font-size: 1.4rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .fashion-ethos-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="fashion-ethos-{{ section.id }}" role="region" aria-label="Brand Philosophy">
+  <div class="fashion-ethos-container">
+    <div class="fashion-ethos-header">
+      <span class="fashion-ethos-subtitle">{{ section.settings.subtitle }}</span>
+      <h2 class="fashion-ethos-title">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="fashion-ethos-grid">
+      <div class="fashion-ethos-item">
+        <span class="fashion-ethos-num">01 // TEXTILE INTEGRITY</span>
+        <h3 class="fashion-ethos-item-title">Custom-Milled Heavyweights</h3>
+        <p class="fashion-ethos-item-desc">We develop our own fabrics from scratch: 480GSM Japanese loopback cotton and double-faced Italian wools. No synthetic fillers, no shortcuts.</p>
+      </div>
+
+      <div class="fashion-ethos-item">
+        <span class="fashion-ethos-num">02 // ARCHITECTURAL FORM</span>
+        <h3 class="fashion-ethos-item-title">Engineered Draping</h3>
+        <p class="fashion-ethos-item-desc">Every silhouette is constructed with sculptural proportions — dropped shoulders, cropped torsos, and clean wide hems that retain their shape through years of wear.</p>
+      </div>
+
+      <div class="fashion-ethos-item">
+        <span class="fashion-ethos-num">03 // LIMITED PRODUCTION</span>
+        <h3 class="fashion-ethos-item-title">Artisanal Small Batches</h3>
+        <p class="fashion-ethos-item-desc">Produced in micro-batches of only 150 pieces per style across specialized ateliers in Milan and Portugal. Never over-produced, never liquidated.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand Ethos & Pillars",
+  "tag": "section",
+  "class": "section-fashion-ethos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "THE ATELIER PHILOSOPHY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Uncompromising Material Purity"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#0e0e0e"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent / Line Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 40,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 40,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Ethos & Pillars"
+    }
+  ]
+}
+{% endschema %}
+

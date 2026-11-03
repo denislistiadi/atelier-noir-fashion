@@ -49,7 +49,15 @@
         </fieldset>
       {%- elsif picker_type == 'button' -%}
         <fieldset class="js product-form__input product-form__input--pill">
-          <legend class="form__label">{{ option.name | escape }}</legend>
+          <legend class="form__label" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <span>{{ option.name | escape }}</span>
+            {%- assign opt_down = option.name | downcase -%}
+            {%- if opt_down contains 'size' or opt_down contains 'ukuran' -%}
+              <button type="button" class="size-guide-btn-link" onclick="document.getElementById('SizeGuideModal-{{ section.id }}').showModal()">
+                📏 Size Guide
+              </button>
+            {%- endif -%}
+          </legend>
           {% render 'product-variant-options',
             option: option,
             block: block,
@@ -94,4 +102,6 @@
       {{ product.selected_or_first_available_variant | json }}
     </script>
   </variant-selects>
+
+  {% render 'size-guide-modal', section: section %}
 {%- endunless -%}

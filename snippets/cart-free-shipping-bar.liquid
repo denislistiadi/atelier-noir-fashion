@@ -1,0 +1,74 @@
+{%- comment -%}
+  Renders an animated Free Shipping goal meter for the Cart Drawer.
+  Threshold can be configured via settings or defaults to 15000 cents ($150.00).
+{%- endcomment -%}
+
+{%- liquid
+  assign free_shipping_threshold = settings.free_shipping_threshold | default: 15000
+  assign current_total = cart.total_price
+  assign amount_remaining = free_shipping_threshold | minus: current_total
+  if amount_remaining <= 0
+    assign percentage = 100
+  else
+    assign percentage = current_total | times: 100 | divided_by: free_shipping_threshold
+  endif
+-%}
+
+<style>
+  .cart-shipping-meter {
+    padding: 1.2rem 2.4rem;
+    background: #f7f7f7;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .cart-shipping-meter__text {
+    font-size: 1.3rem;
+    color: #121212;
+    margin: 0 0 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    line-height: 1.3;
+  }
+  .cart-shipping-meter__text strong {
+    font-weight: 700;
+  }
+  .cart-shipping-meter__bar {
+    width: 100%;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+  }
+  .cart-shipping-meter__progress {
+    height: 100%;
+    background: #121212;
+    border-radius: 999px;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .cart-shipping-meter__progress.is-unlocked {
+    background: #008060;
+  }
+  .cart-shipping-icon {
+    font-size: 1.4rem;
+  }
+</style>
+
+<div class="cart-shipping-meter" id="CartShippingMeter" data-threshold="{{ free_shipping_threshold }}">
+  <p class="cart-shipping-meter__text">
+    {%- if amount_remaining <= 0 -%}
+      <span class="cart-shipping-icon">🎉</span>
+      <span>You have unlocked <strong>Free Complimentary Shipping</strong>!</span>
+    {%- else -%}
+      <span class="cart-shipping-icon">✈</span>
+      <span>Add <strong>{{ amount_remaining | money }}</strong> more to enjoy <strong>Free Shipping</strong>!</span>
+    {%- endif -%}
+  </p>
+  <div class="cart-shipping-meter__bar" role="progressbar" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100">
+    <div
+      class="cart-shipping-meter__progress{% if amount_remaining <= 0 %} is-unlocked{% endif %}"
+      style="width: {{ percentage }}%;"
+    ></div>
+  </div>
+</div>
+

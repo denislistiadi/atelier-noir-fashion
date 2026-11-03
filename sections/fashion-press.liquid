@@ -1,0 +1,153 @@
+{%- style -%}
+  .fashion-press-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+  }
+
+  .fashion-press-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .fashion-press-tag {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #888888;
+    margin-bottom: 3rem;
+    display: block;
+  }
+
+  .fashion-press-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 2rem;
+  }
+
+  .fashion-press-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+    text-align: left;
+  }
+
+  .fashion-press-quote {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    font-weight: 500;
+    margin: 0 0 2rem;
+    color: #121212;
+    font-style: italic;
+  }
+
+  .fashion-press-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #333333;
+  }
+
+  .fashion-press-logo {
+    font-family: serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .fashion-press-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="fashion-press-{{ section.id }}">
+  <div class="fashion-press-container">
+    <span class="fashion-press-tag">EDITORIAL ACCLAIM // PRESS</span>
+
+    <div class="fashion-press-grid">
+      <div class="fashion-press-card">
+        <p class="fashion-press-quote">“The new vanguard of brutalist tailoring. Uncompromising fabric weight and razor-sharp cuts.”</p>
+        <div class="fashion-press-author">
+          <span class="fashion-press-logo">VOGUE</span>
+          <span>• FASHION EDITORIAL</span>
+        </div>
+      </div>
+
+      <div class="fashion-press-card">
+        <p class="fashion-press-quote">“Atelier Noir has mastered the difficult balance of heavyweight architectural draping with daily wearable ease.”</p>
+        <div class="fashion-press-author">
+          <span class="fashion-press-logo">GQ</span>
+          <span>• STYLE WATCH 2026</span>
+        </div>
+      </div>
+
+      <div class="fashion-press-card">
+        <p class="fashion-press-quote">“Proof that independent luxury houses can out-engineer legacy Parisian fashion labels on fabric quality alone.”</p>
+        <div class="fashion-press-author">
+          <span class="fashion-press-logo">HIGHSNOBIETY</span>
+          <span>• ESSENTIAL DROP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Editorial Press & Reviews",
+  "tag": "section",
+  "class": "section-fashion-press",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 72
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial Press & Reviews"
+    }
+  ]
+}
+{% endschema %}

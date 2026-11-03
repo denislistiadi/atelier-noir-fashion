@@ -1449,6 +1449,12 @@
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "scheme-1"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping minimum threshold (in cents, e.g. 15000 = .00)",
+        "default": 15000
       }
     ]
   },

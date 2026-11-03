@@ -1,0 +1,416 @@
+{%- style -%}
+  .fashion-grid-section-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .fashion-grid-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .fashion-grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 1.5rem;
+  }
+
+  .fashion-grid-tag {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #777777;
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+
+  .fashion-grid-title {
+    font-size: clamp(2.4rem, 3.5vw, 3.6rem);
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.5px;
+    color: #121212;
+  }
+
+  .fashion-grid-link {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #121212;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: opacity 0.2s;
+  }
+
+  .fashion-grid-link:hover {
+    opacity: 0.6;
+  }
+
+  .fashion-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem 2rem;
+  }
+
+  .fashion-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .fashion-card-media {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    background-color: #f6f6f6;
+    border-radius: 4px;
+    margin-bottom: 1.4rem;
+  }
+
+  .fashion-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  }
+
+  .fashion-card-img.secondary {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+
+  .fashion-card-media:hover .fashion-card-img.primary {
+    transform: scale(1.04);
+  }
+
+  .fashion-card-media:hover .fashion-card-img.secondary {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+
+  .fashion-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #121212;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    z-index: 2;
+  }
+
+  .fashion-card-badge.badge-stock {
+    background: #a8422b;
+  }
+
+  .fashion-card-quickadd {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    color: #121212;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+    text-align: center;
+  }
+
+  .fashion-card-media:hover .fashion-card-quickadd {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fashion-card-quickadd:hover {
+    background: #121212;
+    color: #ffffff;
+  }
+
+  .fashion-card-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .fashion-card-swatches {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 0.4rem;
+  }
+
+  .fashion-swatch-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .fashion-swatch-dot:hover, .fashion-swatch-dot.is-active {
+    transform: scale(1.25);
+    border-color: #000;
+  }
+
+  .fashion-card-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #121212;
+    margin: 0;
+    letter-spacing: -0.2px;
+    line-height: 1.3;
+    transition: color 0.2s;
+  }
+
+  .fashion-card:hover .fashion-card-name {
+    color: #666;
+  }
+
+  .fashion-card-category {
+    font-size: 1.2rem;
+    color: #777777;
+    margin: 0;
+  }
+
+  .fashion-card-price {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #121212;
+    margin: 0.4rem 0 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .fashion-cards-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem 1.5rem;
+    }
+    .fashion-card-quickadd {
+      opacity: 1;
+      transform: none;
+      padding: 0.8rem;
+      font-size: 1.1rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="fashion-grid-section-{{ section.id }}" id="curated-fashion-grid">
+  <div class="fashion-grid-container">
+    <div class="fashion-grid-header">
+      <div>
+        <span class="fashion-grid-tag">{{ section.settings.tagline }}</span>
+        <h2 class="fashion-grid-title">{{ section.settings.heading }}</h2>
+      </div>
+      <a href="{{ routes.all_products_collection_url }}" class="fashion-grid-link">View Full Catalog →</a>
+    </div>
+
+    <div class="fashion-cards-grid">
+      {%- assign collection = section.settings.collection -%}
+      {%- if collection != blank and collection.products.size > 0 -%}
+        {%- for product in collection.products limit: 4 -%}
+          <a href="{{ product.url }}" class="fashion-card">
+            <div class="fashion-card-media">
+              {%- if product.compare_at_price > product.price -%}
+                <span class="fashion-card-badge">SALE</span>
+              {%- else -%}
+                <span class="fashion-card-badge">NEW</span>
+              {%- endif -%}
+
+              {%- if product.featured_image != blank -%}
+                {{
+                  product.featured_image
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'fashion-card-img primary',
+                    alt: product.title
+                }}
+              {%- endif -%}
+
+              {%- if product.images[1] != blank -%}
+                {{
+                  product.images[1]
+                  | image_url: width: 800
+                  | image_tag:
+                    loading: 'lazy',
+                    class: 'fashion-card-img secondary',
+                    alt: product.title
+                }}
+              {%- endif -%}
+
+              <button
+                type="button"
+                class="fashion-card-quickadd"
+                onclick="event.preventDefault(); event.stopPropagation(); addVariantToCart('{{ product.selected_or_first_available_variant.id }}', this);"
+              >
+                + Quick Add • {{ product.price | money }}
+              </button>
+            </div>
+            <div class="fashion-card-details">
+              <h3 class="fashion-card-name">{{ product.title }}</h3>
+              <p class="fashion-card-category">{{ product.type | default: 'Atelier Noir AW26' }}</p>
+              <p class="fashion-card-price">{{ product.price | money }}</p>
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        {%- comment -%} Curated Real Fashion Pieces {%- endcomment -%}
+        {%- assign curated_items = "oversized-double-breasted-wool-trench|Oversized Double-Breasted Wool Trench|$420.00|https://images.unsplash.com/photo-1544022613-e87ca75a784a?q=80&w=800&auto=format&fit=crop|NEW DROP|Heavyweight Virgin Wool,500gsm-structured-boxy-hoodie|500GSM Structured Boxy Hoodie|$185.00|https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop|ONLY 3 LEFT|Custom-Milled French Terry,pleated-architectural-wide-leg-trouser|Pleated Architectural Wide-Leg Trouser|$240.00|https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop|ICONIC|Japanese Gabardine Twill,artisanal-box-calf-crossbody-bag|Artisanal Box Calf Crossbody Bag|$360.00|https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=800&auto=format&fit=crop|HANDMADE|Full-Grain Tuscan Box Calf" | split: "," -%}
+
+        {%- for item_str in curated_items -%}
+          {%- assign parts = item_str | split: "|" -%}
+          {%- assign handle = parts[0] -%}
+          {%- assign title = parts[1] -%}
+          {%- assign price = parts[2] -%}
+          {%- assign img_url = parts[3] -%}
+          {%- assign badge = parts[4] -%}
+          {%- assign fabric = parts[5] -%}
+
+          <a href="/products/{{ handle }}" class="fashion-card">
+            <div class="fashion-card-media">
+              <span class="fashion-card-badge{% if badge contains 'ONLY' %} badge-stock{% endif %}">{{ badge }}</span>
+              <img
+                src="{{ img_url }}"
+                alt="{{ title }}"
+                class="fashion-card-img primary"
+                loading="lazy"
+                width="800"
+                height="1066"
+              >
+              <button
+                type="button"
+                class="fashion-card-quickadd"
+                onclick="event.preventDefault(); event.stopPropagation(); window.location.href='/products/{{ handle }}';"
+              >
+                View Piece & Details →
+              </button>
+            </div>
+            <div class="fashion-card-details">
+              <div class="fashion-card-swatches">
+                <span class="fashion-swatch-dot is-active" style="background: #111111;"></span>
+                <span class="fashion-swatch-dot" style="background: #c2ab90;"></span>
+              </div>
+              <h3 class="fashion-card-name">{{ title }}</h3>
+              <p class="fashion-card-category">{{ fabric }}</p>
+              <p class="fashion-card-price">{{ price }}</p>
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  function addVariantToCart(variantId, button) {
+    if (!variantId) return;
+    const orig = button.innerHTML;
+    button.innerHTML = 'Adding...';
+    button.disabled = true;
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: variantId, quantity: 1 })
+    })
+    .then(r => r.json())
+    .then(data => {
+      button.innerHTML = '✓ Added to Bag';
+      const drawer = document.querySelector('cart-drawer');
+      if (drawer && typeof drawer.open === 'function') {
+        drawer.open();
+      }
+      setTimeout(() => {
+        button.innerHTML = orig;
+        button.disabled = false;
+      }, 1800);
+    })
+    .catch(() => {
+      button.innerHTML = orig;
+      button.disabled = false;
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Curated Fashion Showcase",
+  "tag": "section",
+  "class": "section-fashion-grid",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Source Collection (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "CURATED APPAREL // AUTUMN / WINTER 2026"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Core Wardrobe Silhouettes"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Curated Fashion Showcase"
+    }
+  ]
+}
+{% endschema %}

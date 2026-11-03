@@ -1,0 +1,266 @@
+{%- comment -%}
+  Interactive Size Guide Modal with Unit Toggle (CM / Inches)
+  Centered in viewport and portaled to document.body.
+{%- endcomment -%}
+
+<style>
+  dialog.size-guide-dialog {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 0 !important;
+    max-width: 640px !important;
+    width: 92vw !important;
+    max-height: 85vh !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45) !important;
+    overflow-y: auto !important;
+    z-index: 999999 !important;
+    background: #ffffff !important;
+  }
+
+  dialog.size-guide-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(6px) !important;
+  }
+
+  .size-guide-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.8rem 2.4rem;
+    border-bottom: 1px solid #ebebeb;
+    background: #fafafa;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  .size-guide-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: -0.3px;
+    color: #121212;
+  }
+
+  .size-guide-close {
+    background: none;
+    border: none;
+    font-size: 2.4rem;
+    cursor: pointer;
+    line-height: 1;
+    color: #666;
+    padding: 4px 8px;
+    transition: color 0.2s;
+  }
+
+  .size-guide-close:hover {
+    color: #000;
+  }
+
+  .size-guide-body {
+    padding: 2.4rem;
+  }
+
+  .size-unit-toggle {
+    display: inline-flex;
+    background: #f0f0f0;
+    border-radius: 6px;
+    padding: 3px;
+    margin-bottom: 1.8rem;
+  }
+
+  .size-unit-btn {
+    border: none;
+    background: transparent;
+    padding: 6px 16px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .size-unit-btn.is-active {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  }
+
+  .size-guide-table-wrap {
+    overflow-x: auto;
+  }
+
+  .size-guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .size-guide-table th {
+    background: #f7f7f7;
+    font-weight: 700;
+    padding: 12px 16px;
+    border: 1px solid #e5e5e5;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: #121212;
+  }
+
+  .size-guide-table td {
+    padding: 12px 16px;
+    border: 1px solid #e5e5e5;
+    color: #333333;
+  }
+
+  .size-guide-table tr:nth-child(even) td {
+    background: #fafafa;
+  }
+
+  .size-guide-tip {
+    margin-top: 1.8rem;
+    font-size: 1.25rem;
+    color: #666;
+    line-height: 1.5;
+    background: #fdf8f0;
+    border-left: 3px solid #d4a373;
+    padding: 1.2rem 1.4rem;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .size-guide-btn-link {
+    background: none;
+    border: none;
+    color: #121212;
+    text-decoration: underline;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+  }
+
+  .size-guide-btn-link:hover {
+    color: #555;
+  }
+</style>
+
+<dialog id="SizeGuideModal-{{ section.id }}" class="size-guide-dialog">
+  <div class="size-guide-header">
+    <h3 class="size-guide-title">📏 Sizing & Measurements</h3>
+    <button type="button" class="size-guide-close" onclick="document.getElementById('SizeGuideModal-{{ section.id }}').close()" aria-label="Close">×</button>
+  </div>
+  <div class="size-guide-body">
+    <div class="size-unit-toggle">
+      <button type="button" class="size-unit-btn is-active" data-unit="cm" onclick="switchSizeUnit('{{ section.id }}', 'cm')">Centimeters (CM)</button>
+      <button type="button" class="size-unit-btn" data-unit="in" onclick="switchSizeUnit('{{ section.id }}', 'in')">Inches (IN)</button>
+    </div>
+
+    <div class="size-guide-table-wrap">
+      <table class="size-guide-table" id="SizeTable-{{ section.id }}">
+        <thead>
+          <tr>
+            <th>Size</th>
+            <th>Chest</th>
+            <th>Length</th>
+            <th>Shoulder</th>
+            <th>Sleeve</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>XS</strong></td>
+            <td data-cm="96" data-in="37.8">96</td>
+            <td data-cm="68" data-in="26.7">68</td>
+            <td data-cm="45" data-in="17.7">45</td>
+            <td data-cm="62" data-in="24.4">62</td>
+          </tr>
+          <tr>
+            <td><strong>S</strong></td>
+            <td data-cm="102" data-in="40.1">102</td>
+            <td data-cm="70" data-in="27.5">70</td>
+            <td data-cm="47" data-in="18.5">47</td>
+            <td data-cm="63" data-in="24.8">63</td>
+          </tr>
+          <tr>
+            <td><strong>M</strong></td>
+            <td data-cm="108" data-in="42.5">108</td>
+            <td data-cm="72" data-in="28.3">72</td>
+            <td data-cm="49" data-in="19.2">49</td>
+            <td data-cm="64" data-in="25.2">64</td>
+          </tr>
+          <tr>
+            <td><strong>L</strong></td>
+            <td data-cm="114" data-in="44.8">114</td>
+            <td data-cm="74" data-in="29.1">74</td>
+            <td data-cm="51" data-in="20.0">51</td>
+            <td data-cm="65" data-in="25.6">65</td>
+          </tr>
+          <tr>
+            <td><strong>XL</strong></td>
+            <td data-cm="120" data-in="47.2">120</td>
+            <td data-cm="76" data-in="29.9">76</td>
+            <td data-cm="53" data-in="20.8">53</td>
+            <td data-cm="66" data-in="26.0">66</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="size-guide-tip">
+      <strong>Fit Guide:</strong> Model is 185cm / 6'1" wearing size Medium. Cut is an oversized modern silhouette. If you prefer a tailored fit, size down one size.
+    </div>
+  </div>
+</dialog>
+
+<script>
+  (function() {
+    function initSizeGuideModal() {
+      const modal = document.getElementById('SizeGuideModal-{{ section.id }}');
+      if (!modal) return;
+      
+      // Portal to document.body to prevent parent container transform/offsets
+      if (modal.parentElement !== document.body) {
+        document.body.appendChild(modal);
+      }
+
+      // Close when clicking outside modal
+      modal.addEventListener('click', function(e) {
+        const rect = modal.getBoundingClientRect();
+        const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+          rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+        if (!isInDialog) {
+          modal.close();
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSizeGuideModal);
+    } else {
+      initSizeGuideModal();
+    }
+  })();
+
+  function switchSizeUnit(sectionId, unit) {
+    const table = document.getElementById('SizeTable-' + sectionId);
+    if (!table) return;
+    const modal = document.getElementById('SizeGuideModal-' + sectionId);
+    const buttons = modal.querySelectorAll('.size-unit-btn');
+    buttons.forEach(btn => btn.classList.toggle('is-active', btn.dataset.unit === unit));
+
+    const cells = table.querySelectorAll('td[data-cm]');
+    cells.forEach(cell => {
+      cell.textContent = unit === 'cm' ? cell.dataset.cm : cell.dataset.in;
+    });
+  }
+</script>

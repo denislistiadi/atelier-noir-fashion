@@ -1,0 +1,15 @@
+{
+  "name": "atelier-noir-shopify-theme",
+  "version": "1.0.0",
+  "description": "Premium Fashion Showcase Portfolio Theme built with Shopify Online Store 2.0",
+  "private": true,
+  "scripts": {
+    "dev": "shopify theme dev",
+    "pull": "shopify theme pull",
+    "push": "shopify theme push",
+    "check": "shopify theme check"
+  },
+  "devDependencies": {
+    "@shopify/cli": "latest"
+  }
+}

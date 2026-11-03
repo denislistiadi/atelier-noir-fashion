@@ -1,0 +1,177 @@
+{%- comment -%}
+  Sticky Add To Cart bar for mobile and desktop screens.
+  Slides up when the main product form scrolls out of view.
+{%- endcomment -%}
+
+<style>
+  .sticky-atc-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    padding: 1rem 1.6rem;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    border-top: 1px solid #eaeaea;
+  }
+
+  .sticky-atc-bar.is-visible {
+    transform: translateY(0);
+  }
+
+  .sticky-atc-info {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    min-width: 0;
+  }
+
+  .sticky-atc-thumb {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #ebebeb;
+    flex-shrink: 0;
+  }
+
+  .sticky-atc-text {
+    min-width: 0;
+  }
+
+  .sticky-atc-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #121212;
+  }
+
+  .sticky-atc-price {
+    font-size: 1.2rem;
+    color: #666666;
+    margin: 0.2rem 0 0;
+  }
+
+  .sticky-atc-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .sticky-atc-btn {
+    background: #121212;
+    color: #ffffff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .sticky-atc-btn:hover {
+    background: #333333;
+  }
+
+  .sticky-atc-btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media screen and (max-width: 480px) {
+    .sticky-atc-title {
+      max-width: 130px;
+    }
+    .sticky-atc-btn {
+      padding: 0.8rem 1.4rem;
+      font-size: 1.1rem;
+    }
+  }
+</style>
+
+<div class="sticky-atc-bar" id="StickyAtc-{{ section.id }}" aria-hidden="true">
+  <div class="sticky-atc-info">
+    {%- if product.featured_image != blank -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 90 }}"
+        alt="{{ product.title | escape }}"
+        class="sticky-atc-thumb"
+        width="44"
+        height="44"
+        loading="lazy"
+      >
+    {%- endif -%}
+    <div class="sticky-atc-text">
+      <p class="sticky-atc-title">{{ product.title }}</p>
+      <p class="sticky-atc-price" id="StickyPrice-{{ section.id }}">
+        {{ product.selected_or_first_available_variant.price | money }}
+      </p>
+    </div>
+  </div>
+
+  <div class="sticky-atc-actions">
+    <button
+      type="button"
+      class="sticky-atc-btn"
+      id="StickySubmit-{{ section.id }}"
+      {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+      onclick="handleStickyAdd('{{ section.id }}')"
+    >
+      {%- if product.selected_or_first_available_variant.available -%}
+        Add to Bag 🛍
+      {%- else -%}
+        Sold Out
+      {%- endif -%}
+    </button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const mainForm = document.querySelector('#product-form-{{ section.id }}') || document.querySelector('.product-form');
+    const stickyBar = document.getElementById('StickyAtc-{{ section.id }}');
+    if (!mainForm || !stickyBar) return;
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          stickyBar.classList.add('is-visible');
+          stickyBar.setAttribute('aria-hidden', 'false');
+        } else {
+          stickyBar.classList.remove('is-visible');
+          stickyBar.setAttribute('aria-hidden', 'true');
+        }
+      });
+    }, { threshold: 0 });
+
+    observer.observe(mainForm);
+  })();
+
+  function handleStickyAdd(sectionId) {
+    const mainForm = document.querySelector('#product-form-' + sectionId) || document.querySelector('.product-form form');
+    if (mainForm) {
+      const submitBtn = mainForm.querySelector('[type="submit"]') || mainForm.querySelector('.product-form__submit');
+      if (submitBtn) {
+        submitBtn.click();
+      } else {
+        mainForm.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+      }
+    }
+  }
+</script>
+

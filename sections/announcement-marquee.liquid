@@ -1,0 +1,348 @@
+{%- style -%}
+  .marquee-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    overflow: hidden;
+    position: relative;
+    border-top: {{ section.settings.border_thickness }}px solid {{ section.settings.border_color }};
+    border-bottom: {{ section.settings.border_thickness }}px solid {{ section.settings.border_color }};
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .marquee-track-{{ section.id }} {
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+    animation: marqueeScroll-{{ section.id }} {{ section.settings.speed }}s linear infinite;
+    {% if section.settings.direction == 'right' %}
+      animation-direction: reverse;
+    {% endif %}
+  }
+
+  {% if section.settings.pause_on_hover %}
+    .marquee-section-{{ section.id }}:hover .marquee-track-{{ section.id }} {
+      animation-play-state: paused;
+    }
+  {% endif %}
+
+  .marquee-item-{{ section.id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0 {{ section.settings.item_spacing }}px;
+    font-size: {{ section.settings.font_size }}px;
+    font-weight: {{ section.settings.font_weight }};
+    letter-spacing: {{ section.settings.letter_spacing }}px;
+    text-transform: {{ section.settings.text_transform }};
+    text-decoration: none;
+    color: inherit;
+    line-height: 1.2;
+  }
+
+  .marquee-item-{{ section.id }}:hover {
+    opacity: 0.85;
+  }
+
+  .marquee-separator-{{ section.id }} {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+    opacity: 0.6;
+  }
+
+  @keyframes marqueeScroll-{{ section.id }} {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track-{{ section.id }} {
+      animation: none;
+      overflow-x: auto;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .marquee-item-{{ section.id }} {
+      font-size: {{ section.settings.font_size | times: 0.85 | round }}px;
+      padding: 0 {{ section.settings.item_spacing | times: 0.7 | round }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="marquee-section-{{ section.id }}" role="region" aria-label="Announcement">
+  <div class="marquee-track-{{ section.id }}" aria-hidden="false">
+    {%- comment -%} Render original content {%- endcomment -%}
+    {%- for i in (1..2) -%}
+      <div class="marquee-group-{{ section.id }}" {% if forloop.index > 1 %}aria-hidden="true"{% endif %} style="display: inline-flex; align-items: center;">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}" class="marquee-item-{{ section.id }}" {{ block.shopify_attributes }}>
+          {%- else -%}
+            <span class="marquee-item-{{ section.id }}" {{ block.shopify_attributes }}>
+          {%- endif -%}
+
+            {%- if block.settings.icon != 'none' -%}
+              <span class="marquee-icon">
+                {%- case block.settings.icon -%}
+                  {%- when 'star' -%}★
+                  {%- when 'sparkle' -%}✦
+                  {%- when 'fire' -%}⚡
+                  {%- when 'tag' -%}🏷
+                  {%- when 'shipping' -%}✈
+                {%- endcase -%}
+              </span>
+            {%- endif -%}
+
+            <span>{{ block.settings.text }}</span>
+
+            {%- if section.settings.show_separator -%}
+              <span class="marquee-separator-{{ section.id }}"></span>
+            {%- endif -%}
+
+          {%- if block.settings.link != blank -%}
+            </a>
+          {%- else -%}
+            </span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee Announcement",
+  "tag": "section",
+  "class": "section-marquee",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content & Behavior"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Scroll Direction",
+      "options": [
+        { "value": "left", "label": "Left to Right" },
+        { "value": "right", "label": "Right to Left" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "s",
+      "label": "Animation Duration (Speed)",
+      "default": 24
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on mouse hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_separator",
+      "label": "Show separator dots",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 11,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "font_weight",
+      "label": "Font Weight",
+      "options": [
+        { "value": "400", "label": "Regular (400)" },
+        { "value": "500", "label": "Medium (500)" },
+        { "value": "600", "label": "Semi Bold (600)" },
+        { "value": "700", "label": "Bold (700)" }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Text Transform",
+      "options": [
+        { "value": "uppercase", "label": "UPPERCASE" },
+        { "value": "none", "label": "Normal" }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "min": 0,
+      "max": 4,
+      "step": 0.5,
+      "unit": "px",
+      "label": "Letter Spacing",
+      "default": 1.5
+    },
+    {
+      "type": "range",
+      "id": "item_spacing",
+      "min": 16,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "label": "Spacing Between Items",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Colors & Borders"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "border_thickness",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Thickness",
+      "default": 1
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#2b2b2b"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 6,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 6,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 12
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement_item",
+      "name": "Announcement Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "COMPLIMENTARY WORLDWIDE SHIPPING ON ORDERS OVER $200"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (Optional)"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "sparkle", "label": "Sparkle (✦)" },
+            { "value": "star", "label": "Star (★)" },
+            { "value": "shipping", "label": "Shipping (✈)" },
+            { "value": "tag", "label": "Tag (🏷)" },
+            { "value": "fire", "label": "Lightning (⚡)" }
+          ],
+          "default": "sparkle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Announcement",
+      "blocks": [
+        {
+          "type": "announcement_item",
+          "settings": {
+            "text": "ATELIER NOIR — AUTUMN / WINTER 2026 COLLECTION NOW LIVE",
+            "icon": "sparkle"
+          }
+        },
+        {
+          "type": "announcement_item",
+          "settings": {
+            "text": "FREE EXPRESS SHIPPING ON ORDERS OVER $150",
+            "icon": "shipping"
+          }
+        },
+        {
+          "type": "announcement_item",
+          "settings": {
+            "text": "SUSTAINABLY CRAFTED WITH 100% ORGANIC HEAVYWEIGHT COTTON",
+            "icon": "sparkle"
+          }
+        },
+        {
+          "type": "announcement_item",
+          "settings": {
+            "text": "LIMITED EDITION DROP — NO RESTOCKS",
+            "icon": "fire"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

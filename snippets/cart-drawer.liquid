@@ -76,6 +76,9 @@
           </span>
         </button>
       </div>
+      {%- if cart != empty -%}
+        {% render 'cart-free-shipping-bar' %}
+      {%- endif -%}
       <cart-drawer-items
         view-event-payload="{{ cart | standard_event_data: 'view', context: 'dialog' | escape }}"
         view-event-trigger="manual"

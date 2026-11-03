@@ -1,0 +1,240 @@
+{%- style -%}
+  .fashion-about-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+  }
+
+  .fashion-about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .fashion-about-hero {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 6rem;
+  }
+
+  .fashion-about-tag {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #888888;
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 600;
+  }
+
+  .fashion-about-title {
+    font-size: clamp(3rem, 5vw, 5.2rem);
+    font-weight: 800;
+    margin: 0 0 2rem;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+  }
+
+  .fashion-about-manifesto {
+    font-size: clamp(1.6rem, 2vw, 2.2rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: #444444;
+    font-style: italic;
+    margin: 0;
+  }
+
+  .fashion-about-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem 4rem;
+    margin-bottom: 6rem;
+    align-items: center;
+  }
+
+  .fashion-about-media {
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f0f0f0;
+  }
+
+  .fashion-about-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  .fashion-about-content h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0 0 1.2rem;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+    color: #121212;
+  }
+
+  .fashion-about-content p {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #555555;
+    margin: 0 0 1.5rem;
+  }
+
+  .fashion-about-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 4rem;
+  }
+
+  .fashion-about-pillar-num {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #121212;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .fashion-about-pillar-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 0.8rem;
+    text-transform: uppercase;
+  }
+
+  .fashion-about-pillar-desc {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #666666;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 749px) {
+    .fashion-about-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .fashion-about-pillars {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="fashion-about-{{ section.id }}" role="region" aria-label="About the Atelier">
+  <div class="fashion-about-container">
+    <div class="fashion-about-hero">
+      <span class="fashion-about-tag">{{ section.settings.subtitle | default: 'THE ATELIER MANIFESTO // EST. 2024' }}</span>
+      <h1 class="fashion-about-title">{{ section.settings.heading | default: 'Architectural Purity' }}</h1>
+      <p class="fashion-about-manifesto">
+        “We reject the disposable velocity of trend cycles. Our garments are sculptural studies in heavyweight draping, built to endure for decades.”
+      </p>
+    </div>
+
+    <div class="fashion-about-grid">
+      <div class="fashion-about-media">
+        <img
+          src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1200&auto=format&fit=crop"
+          alt="Atelier craftsmanship"
+          class="fashion-about-img"
+          loading="lazy"
+          width="1200"
+          height="900"
+        >
+      </div>
+      <div class="fashion-about-content">
+        <h2>Custom-Milled Heavyweights</h2>
+        <p>
+          Every fiber is custom engineered to our exact specifications. Rather than buying commercial market cotton, we partner with heritage spinners in Wakayama, Japan, and Biella, Italy, to spin 480GSM to 520GSM yarns on vintage loopwheel machines.
+        </p>
+        <p>
+          The result is a structured hand-feel that holds its architectural silhouette indefinitely, improving with age and wear like fine denim or bespoke leather.
+        </p>
+      </div>
+    </div>
+
+    <div class="fashion-about-pillars">
+      <div>
+        <span class="fashion-about-pillar-num">01 // TEXTILE INTEGRITY</span>
+        <h3 class="fashion-about-pillar-title">100% Natural Yarns</h3>
+        <p class="fashion-about-pillar-desc">Zero polyester, acrylic, or microplastics. Only organic Egyptian long-staple cotton and Italian virgin wool.</p>
+      </div>
+      <div>
+        <span class="fashion-about-pillar-num">02 // PATTERN MAKING</span>
+        <h3 class="fashion-about-pillar-title">Engineered Proportions</h3>
+        <p class="fashion-about-pillar-desc">Drop-shoulder seams, cropped torsos, and clean forward pleats drafted through months of geometric prototyping.</p>
+      </div>
+      <div>
+        <span class="fashion-about-pillar-num">03 // LIMITED DISCIPLINE</span>
+        <h3 class="fashion-about-pillar-title">150 Pieces Per Drop</h3>
+        <p class="fashion-about-pillar-desc">Strict micro-batch production. Every garment is individually numbered and never discounted in mass sales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Luxury About Story",
+  "tag": "section",
+  "class": "section-fashion-about",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "THE ATELIER MANIFESTO // EST. 2024"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Architectural Purity"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury About Story"
+    }
+  ]
+}
+{% endschema %}
+

@@ -1492,3 +1492,57 @@ a.product__text {
     border: none;
   }
 }
+
+/* ATELIER NOIR LUXURY PDP GALLERY PERFECTION */
+.product__media-wrapper .product__media-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.product__media-wrapper .product__media-item {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.product__media-wrapper .product__modal-opener,
+.product__media-wrapper .media {
+  aspect-ratio: 3 / 4 !important;
+  background-color: #f8f8f8 !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  padding-top: 0 !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.product__media-wrapper .media img {
+  object-fit: cover !important;
+  object-position: top center !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  inset: 0 !important;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.product__media-wrapper .media:hover img {
+  transform: scale(1.03) !important;
+}
+
+.product__info-container {
+  padding-left: 3rem !important;
+}
+
+@media screen and (max-width: 749px) {
+  .product__info-container {
+    padding-left: 0 !important;
+    padding-top: 2rem !important;
+  }
+}
