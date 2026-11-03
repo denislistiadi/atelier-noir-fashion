@@ -10,3 +10,8 @@ Thumbs.db
 .shopify
 node_modules
 *.zip
+*.bak
+
+# Internal Strategy & Client Pitching Kit (Keep Private)
+PORTFOLIO_CASE_STUDY.md
+CLIENT_PITCH_GUIDE.md
