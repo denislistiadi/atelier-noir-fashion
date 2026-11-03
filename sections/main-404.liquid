@@ -1,23 +1,42 @@
-<style type="text/css">
-  .template-404 .title + * {
-    margin-top: 1rem;
-  }
-
-  @media screen and (min-width: 750px) {
+<div id="default-404-container">
+  <style type="text/css">
     .template-404 .title + * {
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
-  }
-</style>
 
-<div class="template-404 page-width page-margin center">
-  <p>
-    {{ 'templates.404.subtext' | t }}
-  </p>
-  <h1 class="title">
-    {{ 'templates.404.title' | t }}
-  </h1>
-  <a href="{{ routes.all_products_collection_url }}" class="button">
-    {{ 'general.continue_shopping' | t }}
-  </a>
+    @media screen and (min-width: 750px) {
+      .template-404 .title + * {
+        margin-top: 2rem;
+      }
+    }
+  </style>
+
+  <div class="template-404 page-width page-margin center">
+    <p>
+      {{ 'templates.404.subtext' | t }}
+    </p>
+    <h1 class="title">
+      {{ 'templates.404.title' | t }}
+    </h1>
+    <a href="{{ routes.all_products_collection_url }}" class="button">
+      {{ 'general.continue_shopping' | t }}
+    </a>
+  </div>
 </div>
+
+<div id="atelier-fallback-container" style="display: none;">
+  {% render 'fashion-about-content' %}
+</div>
+
+<script>
+  (function() {
+    var p = window.location.pathname.toLowerCase();
+    if (p.indexOf('about') !== -1 || p.indexOf('atelier') !== -1 || p.indexOf('story') !== -1) {
+      var d = document.getElementById('default-404-container');
+      var a = document.getElementById('atelier-fallback-container');
+      if (d) d.style.display = 'none';
+      if (a) a.style.display = 'block';
+      document.title = 'The Atelier — ATELIER NOIR';
+    }
+  })();
+</script>

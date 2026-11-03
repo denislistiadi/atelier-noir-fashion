@@ -167,3 +167,4 @@ Ketika klien membandingkan Anda dengan freelancer murah atau bertanya mengapa ha
 - [ ] **LinkedIn Featured Section:** Buat postingan studi kasus carousel (bisa gunakan ringkasan dari `PORTFOLIO_CASE_STUDY.md`), tag #Shopify #Ecommerce #WebDevelopment, dan sematkan di profil utama Anda.
 - [ ] **GitHub Showcase:** Repository `shop-store` sudah dilengkapi `README.md` berstandar internasional lengkap dengan badges, diagram mermaid, dan panduan arsitektur. Anda bisa jadikan repo ini sebagai "Pinned Repository" di GitHub profil Anda.
 - [ ] **Personal Portfolio Website / Notion:** Pasang link demo `https://atelier-noir-fashion.myshopify.com` dan embed video Loom Anda!
+
