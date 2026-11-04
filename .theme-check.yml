@@ -2,3 +2,9 @@ MatchingTranslations:
   enabled: false
 TemplateLength:
   enabled: false
+UnknownFilter:
+  enabled: false
+RemoteAsset:
+  enabled: false
+HardcodedRoutes:
+  enabled: false
