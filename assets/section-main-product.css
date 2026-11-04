@@ -1546,3 +1546,277 @@ a.product__text {
     padding-top: 2rem !important;
   }
 }
+
+/* ==========================================================================
+   ATELIER NOIR — HIGH-FASHION PRODUCT GALLERY SLIDER (DESKTOP & MOBILE)
+   ========================================================================== */
+
+/* --- 1. Gallery Container & Main Viewer --- */
+.product--thumbnail_slider .product__media-wrapper {
+  max-width: 100%;
+}
+
+.product--thumbnail_slider .product__media-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* --- 2. Desktop Slider & Thumbnail Bar (>= 750px) --- */
+@media screen and (min-width: 750px) {
+  .product--thumbnail_slider .product__media-item:not(.is-active) {
+    display: none;
+  }
+
+  .product--thumbnail_slider .product__media-item.is-active {
+    display: block;
+    width: 100% !important;
+  }
+
+  .product--thumbnail_slider .thumbnail-slider {
+    margin-top: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+  }
+
+  .product--thumbnail_slider .thumbnail-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0.4rem;
+    margin: 0;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .product--thumbnail_slider .thumbnail-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product--thumbnail_slider .thumbnail-list__item {
+    width: 75px !important;
+    min-width: 75px !important;
+    max-width: 75px !important;
+    flex: 0 0 75px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .product--thumbnail_slider .thumbnail {
+    aspect-ratio: 3 / 4 !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 4px !important;
+    border: 2px solid transparent !important;
+    overflow: hidden !important;
+    background: #f5f5f5 !important;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  .product--thumbnail_slider .thumbnail:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+  }
+
+  .product--thumbnail_slider .thumbnail[aria-current="true"] {
+    opacity: 1 !important;
+    border-color: #121212 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .product--thumbnail_slider .thumbnail img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    display: block !important;
+  }
+
+  .product--thumbnail_slider .thumbnail-slider .slider-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .product--thumbnail_slider .thumbnail-slider .slider-button:hover {
+    background: #121212;
+    color: #ffffff;
+    border-color: #121212;
+  }
+
+  .product--thumbnail_slider .thumbnail-slider .slider-button .svg-wrapper {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* --- 3. Mobile Precision Viewport (< 749px) --- */
+@media screen and (max-width: 749px) {
+  .product__media-wrapper {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .product__media-wrapper slider-component:not(.thumbnail-slider) {
+    margin: 0 !important;
+    padding: 0 1.5rem !important;
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .product__media-list {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 1.2rem !important;
+  }
+
+  .product__media-list::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .product__media-list .product__media-item {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    scroll-snap-align: center !important;
+    scroll-snap-stop: always !important;
+    display: block !important;
+  }
+
+  .product__media-wrapper .product__modal-opener,
+  .product__media-wrapper .media {
+    aspect-ratio: 3 / 4 !important;
+    border-radius: 6px !important;
+    overflow: hidden !important;
+    background-color: #f7f7f7 !important;
+  }
+
+  .product__media-wrapper .media img {
+    object-fit: cover !important;
+    object-position: top center !important;
+  }
+
+  .product__media-wrapper .slider-buttons {
+    margin-top: 1.2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.2rem !important;
+  }
+
+  .product__media-wrapper .slider-counter {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px !important;
+    color: #121212 !important;
+    background: #f0f0f0 !important;
+    padding: 0.4rem 1.4rem !important;
+    border-radius: 20px !important;
+    text-transform: uppercase !important;
+  }
+
+  .product__media-wrapper .slider-button {
+    width: 38px !important;
+    height: 38px !important;
+    border-radius: 50% !important;
+    background: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #121212 !important;
+  }
+
+  .thumbnail-slider {
+    margin-top: 1.2rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 1.5rem !important;
+  }
+
+  .thumbnail-slider .thumbnail-list {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.8rem !important;
+    padding: 0.4rem 0 !important;
+    margin: 0 !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+    list-style: none !important;
+  }
+
+  .thumbnail-slider .thumbnail-list::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .thumbnail-list__item.slider__slide {
+    width: 60px !important;
+    min-width: 60px !important;
+    max-width: 60px !important;
+    flex: 0 0 60px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .thumbnail {
+    aspect-ratio: 3 / 4 !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    border: 1.5px solid transparent !important;
+    opacity: 0.45 !important;
+    background: #f4f4f4 !important;
+    padding: 0 !important;
+    display: block !important;
+    transition: all 0.2s ease !important;
+  }
+
+  .thumbnail[aria-current="true"] {
+    border-color: #121212 !important;
+    opacity: 1 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    transform: scale(1.04);
+  }
+
+  .thumbnail img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+    display: block !important;
+  }
+}
