@@ -91,7 +91,7 @@
         "constrain_to_viewport": true,
         "media_fit": "cover",
         "image_zoom": "hover",
-        "mobile_thumbnails": "show",
+        "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
