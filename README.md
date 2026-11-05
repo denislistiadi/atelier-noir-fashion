@@ -1,138 +1,140 @@
-# ✦ ATELIER NOIR — Luxury Fashion Shopify OS 2.0 Storefront
+# Atelier Noir — Shopify OS 2.0 Fashion Theme
 
-[![Shopify Online Store 2.0](https://img.shields.io/badge/Shopify-Online%20Store%202.0-7AB55C?logo=shopify&logoColor=white)](https://shopify.dev/docs/themes)
-[![Liquid Architecture](https://img.shields.io/badge/Liquid-Custom%20Sections-4b6cb7)](https://shopify.dev/docs/api/liquid)
-[![Lighthouse Speed](https://img.shields.io/badge/Core%20Web%20Vitals-90%2B-008060)](https://pagespeed.web.dev/)
-[![Third-Party App Bloat](https://img.shields.io/badge/App%20Dependency-0%20Apps%20(Pure%20Liquid)-black)](https://github.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-gray.svg)](LICENSE.md)
+A custom, high-performance Shopify Online Store 2.0 theme crafted for contemporary fashion and luxury apparel brands. Built with native Liquid, modern vanilla JavaScript, and zero external app dependencies.
 
-> **Live Demo Store:** [https://atelier-noir-fashion.myshopify.com](https://atelier-noir-fashion.myshopify.com)  
-> **Role:** Shopify Theme Developer & E-Commerce CRO Specialist  
-> **Industry:** High-End Contemporary Fashion & Luxury Apparel  
-> **Tech Stack:** Shopify CLI 5.x, Liquid, Modern Vanilla JavaScript (ES6+), CSS Grid/Flexbox, Shopify AJAX Cart API  
+**Live Store:** [atelier-noir-fashion.myshopify.com](https://atelier-noir-fashion.myshopify.com)  
+**Storefront Password:** `yeotwo`  
+**Built with:** Shopify CLI, Dawn architecture, Liquid, Vanilla JS (ES6+), CSS Grid/Flexbox
 
 ---
 
-## 🌟 Executive Summary
+## Why this project?
 
-**Atelier Noir** is a production-ready, custom-engineered Shopify storefront built to emulate the caliber of elite fashion houses (*Fear of God, Acne Studios, Totême, Jacquemus*). 
+Most Shopify fashion stores suffer from performance degradation and high recurring costs because they rely on third-party apps for basic features: shipping calculators, size guides, product swatches, lookbooks, and sticky cart bars. Each app injects external scripts, stylesheets, and tracking pixels that drag down PageSpeed and introduce layout shifts (CLS).
 
-The primary architectural objective was **Zero App Bloat**: delivering advanced e-commerce functionality (*dynamic free shipping goal meters, visual color swatches, interactive size measurement modals, editorial ensemble showcases, and sticky mobile conversion bars*) natively in **clean Liquid and vanilla JavaScript**, eliminating recurring app monthly fees ($200+/month) while securing near-perfect **Google Core Web Vitals** scores.
+**Atelier Noir** was built to demonstrate that advanced e-commerce functionality can—and should—be engineered natively into the theme:
 
----
-
-## ⚡ Core Technical Features & CRO Highlights
-
-### 1. High-AOV AJAX Cart Drawer
-* **Dynamic Free Shipping Meter (`snippets/cart-free-shipping-bar.liquid`):** Calculates remaining checkout value in real-time. Unlocks an animated celebration banner when the threshold ($150.00) is reached.
-* **Instant AJAX Controls:** Fluid quantity adjustments and line-item removals powered by Shopify Section Rendering API with zero page reload.
-* **Configurable Threshold:** Merchant-editable directly within Shopify Theme Settings (`Settings -> Cart`).
-
-### 2. Enhanced High-Fashion Product Detail Page (PDP)
-* **Uniform 3:4 Portrait Media Gallery:** Custom stacked layout with subtle hover zoom (`scale(1.03)`), eliminating awkward stretching or mismatched image heights.
-* **Interactive Size Guide Modal (`snippets/size-guide-modal.liquid`):**
-  * Auto-portaled to `document.body` to guarantee 100% viewport centering across all mobile and desktop devices.
-  * Instant **Centimeters (CM) vs. Inches (IN)** unit converter toggle.
-  * Click-outside backdrop dismissal with background blur.
-* **Variant Color Swatches:** Dynamic color selection with selected state indicators.
-* **Luxury Accordion Disclosures:** Tabbed specifications for *Fabric & Material Architecture* (520GSM Italian Wool), *Fit & Proportions*, and *Complimentary Global Shipping*.
-* **Sticky Mobile Add-to-Cart Bar (`snippets/sticky-add-to-cart.liquid`):** Slides into view via IntersectionObserver as the shopper scrolls past the primary CTA, driving mobile conversion rate (CRO).
-
-### 3. Curated Homepage Sections (Online Store 2.0)
-* **Cinematic Fashion Hero Banner (`sections/fashion-hero.liquid`):** Full-bleed responsive visual with `fetchpriority="high"`, editorial typography, collection drop metadata, and dual CTAs.
-* **Curated Wardrobe Showcase (`sections/fashion-product-grid.liquid`):** 4-column luxury grid featuring secondary image hover transitions, color dot previews, and 1-click Quick Add.
-* **Editorial Spotlight Ensemble (`sections/editorial-spotlight.liquid`):** Magazine-style split showcase connecting a runway campaign visual with a detailed breakdown of the 3 pieces worn by the model.
-* **Brand Philosophy & Craftsmanship Pillars (`sections/fashion-ethos.liquid`):** Editorial storytelling on custom-milled Japanese cotton and 150-piece micro-batch discipline.
-* **Infinite Marquee Announcement Ticker (`sections/announcement-marquee.liquid`):** Hardware-accelerated CSS scrolling ticker with pause-on-hover and speed controls.
-* **Editorial Acclaim (`sections/fashion-press.liquid`):** Clean press endorsement cards citing *VOGUE, GQ, and HIGHSNOBIETY*.
-
-### 4. Comprehensive Multi-Page Store Experience
-* **Client Concierge Page (`templates/page.contact.json` & `sections/fashion-contact.liquid`):** 2-column layout showcasing Paris flagship & Tokyo showroom locations, direct departmental emails, operating hours, and a native Shopify form with inquiry classification.
-* **Brand Manifesto Page (`templates/page.about.json` & `sections/fashion-about.liquid`):** Brand storytelling archive highlighting workshop craftsmanship and sustainable manufacturing.
-* **Multi-Tier Navigation (`snippets/header-dropdown-menu.liquid` & `snippets/header-drawer.liquid`):** Rich dropdown navigation for desktop and responsive slide-out drawer for mobile.
+- **0 Monthly App Costs:** Features typically billed at $15–$50/month each are built directly into Liquid templates.
+- **Pure Native Stack:** Built on modern Web Components and standard Shopify Section Rendering APIs. No jQuery, no bloated libraries.
+- **Core Web Vitals First:** Fixed 3:4 aspect ratios to eliminate layout shifts, prioritized LCP assets, and deferred non-critical scripts.
 
 ---
 
-## 📊 Performance & Core Web Vitals Optimization
+## Key Features
 
-| Optimization Metric | Implementation | Business Impact |
-| :--- | :--- | :--- |
-| **LCP (Largest Contentful Paint)** | `<link rel="preconnect">` for CDN assets + `fetchpriority="high"` on Hero banner | Cuts initial rendering delay by ~250ms+ |
-| **CLS (Cumulative Layout Shift)** | Strict `aspect-ratio: 3/4` on all product cards and media galleries | Zero visual jumps during image load (**CLS: 0.00**) |
-| **Zero Render-Blocking JS** | Native ES6 modules, zero jQuery, deferred scripts | Eliminates main thread execution bottlenecks |
-| **SEO & Social Metadata** | Custom Open Graph (`og:image`) fallback tags in `snippets/meta-tags.liquid` | High-fidelity rich cards when shared on socials |
+### 1. AJAX Cart Drawer with Dynamic Free Shipping Tier
+- Real-time remaining balance calculation towards free shipping ($150 default threshold).
+- Seamless quantity increments and line-item removals powered by Shopify Section Rendering API without full-page reloads.
+- Configurable free shipping threshold directly editable from Shopify Theme Settings (`Theme Settings → Cart`).
+
+### 2. Product Detail Page (PDP) Media Gallery
+- Responsive thumbnail slider with support for touch swiping on mobile and circular arrow navigation on desktop.
+- Smart layout handling that prevents viewport jump (`window.scrollTo`) when cycling through images.
+- Desktop layout constrained to a balanced 600px width with automatic centering and smooth hover transitions.
+
+### 3. Native Size Guide Modal with Unit Converter
+- Interactive unit toggle: switches instantly between Centimeters (CM) and Inches (IN).
+- Portaled directly to `document.body` for consistent viewport positioning across iOS, Android, and desktop.
+- Backdrop blur with smooth ESC and click-outside dismissal.
+
+### 4. Custom Online Store 2.0 Sections
+- **Runway Lookbook & Editorial Spotlight (`sections/editorial-spotlight.liquid`):** Split-view editorial showcase linking a campaign photo with individual garment cards and quick links.
+- **Curated Product Showcase (`sections/fashion-product-grid.liquid`):** 4-column luxury grid with secondary hover preview, variant color dots, and one-click quick add.
+- **Infinite Marquee Announcement (`sections/announcement-marquee.liquid`):** Smooth scrolling ticker with pause-on-hover.
+- **Showroom & Concierge Contact Page (`sections/fashion-contact.liquid`):** Multi-column layout featuring flagship address details, departmental inquiries, and native contact form integration.
+- **Brand Story Manifesto (`sections/fashion-about.liquid`):** Editorial storytelling layout detailing textile sourcing and craftsmanship.
 
 ---
 
-## 📁 Repository Directory Structure
+## Tech Stack & Architecture
+
+| Layer | Technologies & Techniques |
+| :--- | :--- |
+| **Templating** | Shopify Liquid (OS 2.0 JSON templates, custom sections & snippets) |
+| **JavaScript** | Native ES6+, Custom Elements (Web Components), Section Rendering API, IntersectionObserver |
+| **Styling** | Modular CSS, CSS custom properties, Flexbox, CSS Grid, aspect-ratio |
+| **Tooling** | Shopify CLI 5.x, Theme Check, Git, GitHub Actions CI |
+
+---
+
+## Project Structure
 
 ```text
 ├── assets/
-│   ├── component-card.css         # Uniform 3:4 portrait card styling & hover scaling
-│   ├── section-main-product.css   # Stacked PDP gallery & luxury typography
-│   └── cart-drawer.js             # AJAX cart rendering & drawer management
+│   ├── component-card.css         # Product card styling & hover states
+│   ├── media-gallery.js           # Touch slider & gallery interactions
+│   ├── section-main-product.css   # PDP media gallery & layout rules
+│   └── cart-drawer.js             # AJAX cart operations
 ├── config/
-│   ├── settings_data.json         # Architectural theme presets & typography
-│   └── settings_schema.json       # Added free shipping threshold setting
+│   ├── settings_data.json         # Typography, colors & default configuration
+│   └── settings_schema.json       # Custom theme settings (cart threshold, etc.)
 ├── layout/
-│   └── theme.liquid               # Core HTML shell with preconnect resource hints
+│   ├── theme.liquid               # Global HTML document shell
+│   └── password.liquid            # Coming soon / password protection page
 ├── sections/
-│   ├── announcement-marquee.liquid # Infinite hardware-accelerated ticker
-│   ├── editorial-spotlight.liquid  # Split-screen Runway Ensemble lookbook
-│   ├── fashion-about.liquid        # Brand story & craftsmanship pillars
-│   ├── fashion-contact.liquid      # 2-column showroom concierge & inquiry form
-│   ├── fashion-ethos.liquid        # Material purity & textile manifesto
-│   ├── fashion-hero.liquid         # High-fashion cinematic hero banner
-│   ├── fashion-press.liquid        # Press review quotes (Vogue, GQ)
-│   └── fashion-product-grid.liquid # 4-column luxury garment showcase
+│   ├── announcement-marquee.liquid # Ticker banner
+│   ├── editorial-spotlight.liquid  # Split-screen lookbook section
+│   ├── fashion-about.liquid        # Brand story page section
+│   ├── fashion-contact.liquid      # Showroom & customer service contact
+│   ├── fashion-ethos.liquid        # Craftsmanship pillars
+│   ├── fashion-hero.liquid         # Hero banner with fetchpriority optimization
+│   └── fashion-product-grid.liquid # 4-column collection grid with quick add
 ├── snippets/
-│   ├── buy-buttons.liquid          # Active AJAX Add to Bag button
-│   ├── card-product.liquid         # AW26 collection badges & hover transitions
-│   ├── cart-free-shipping-bar.liquid # Animated free shipping goal meter
-│   ├── header-dropdown-menu.liquid # Boutique navigation with dropdowns
-│   ├── header-drawer.liquid        # Mobile drawer navigation
-│   ├── size-guide-modal.liquid     # CM/Inches unit converter (dead-centered)
-│   └── sticky-add-to-cart.liquid   # Mobile floating bottom CTA bar
-├── templates/
-│   ├── index.json                  # Dynamic homepage sections sequence
-│   ├── product.json                # PDP template with accordion specification tabs
-│   ├── collection.json             # 3-column portrait product grid
-│   ├── page.about.json             # Brand manifesto template
-│   └── page.contact.json           # Client concierge template
-└── atelier_noir_products.csv       # Pre-seeded luxury fashion catalog CSV
+│   ├── cart-free-shipping-bar.liquid # Dynamic free shipping calculation
+│   ├── product-media-gallery.liquid  # Media viewer & thumbnail slider
+│   ├── size-guide-modal.liquid       # Interactive CM/IN size chart
+│   └── sticky-add-to-cart.liquid     # Bottom sticky conversion bar
+└── templates/
+    ├── index.json                  # Modular homepage structure
+    ├── product.json                # Product page layout & block schema
+    ├── collection.json             # Collection catalog page
+    ├── page.about.json             # Brand manifesto template
+    └── page.contact.json           # Contact page template
 ```
 
 ---
 
-## 🛠️ Local Development & Deployment
+## Development Setup
 
-This project uses the official **Shopify CLI 5.x**:
+To run and preview this theme locally:
+
+### Prerequisites
+- Node.js (v18+)
+- Shopify CLI: `npm install -g @shopify/cli`
+- A Shopify Partner or development store
+
+### Commands
 
 ```bash
-# 1. Install dependencies
+# Clone the repository
+git clone https://github.com/denislistiadi/atelier-noir-fashion.git
+cd atelier-noir-fashion
+
+# Install local dependencies
 npm install
 
-# 2. Start local development server with Live Reload
-npm run dev -- --store your-store.myshopify.com
+# Start development server with live reload
+shopify theme dev --store atelier-noir-fashion.myshopify.com
 
-# 3. Validate theme code quality
-npm run check
+# Run Theme Check linter
+shopify theme check
 
-# 4. Push updates to live theme
-npm run push -- --store your-store.myshopify.com --theme <THEME_ID> --allow-live
+# Push changes to a specific theme
+shopify theme push --store atelier-noir-fashion.myshopify.com --theme <THEME_ID>
 ```
 
 ---
 
-## 👤 Author & Inquiries
+## Author
 
-**Shopify Theme Developer & Technical Liquid Specialist**  
-Available for custom Shopify Plus theme development, headless architectures, and e-commerce CRO audits.
+**Denis Listiadi**  
+- GitHub: [@denislistiadi](https://github.com/denislistiadi)  
+- Email: denislistiadi24@gmail.com  
+- Project: [atelier-noir-fashion](https://github.com/denislistiadi/atelier-noir-fashion)
 
 ---
 
-## 📄 License & Disclaimer
+## License
 
-- **Theme Engine:** Built upon [Shopify Dawn](https://github.com/Shopify/dawn), distributed under the [Shopify Theme License](LICENSE.md). Copyright (c) 2021-present Shopify Inc. You are free to fork, customize, and distribute for Shopify stores in accordance with the MIT license terms.
-- **Media & Photography:** All photography assets are sourced from [Unsplash](https://unsplash.com) and utilized under the free [Unsplash License](https://unsplash.com/license) (free for non-commercial and commercial use).
-- **Concept Showcase:** *Atelier Noir* is a concept showcase created exclusively for developer portfolio and educational purposes. Editorial press references (e.g. Vogue, GQ) are utilized solely as aesthetic design placeholders.
+- Base theme structure derived from [Shopify Dawn](https://github.com/Shopify/dawn), licensed under the MIT License.
+- Product imagery sourced from [Unsplash](https://unsplash.com) for demonstration purposes under the Unsplash License.
