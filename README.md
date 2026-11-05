@@ -151,13 +151,13 @@ cd atelier-noir-fashion
 npm install
 
 # Start development server with live reload
-shopify theme dev --store atelier-noir-fashion.myshopify.com
+shopify theme dev --store <your-store-handle>.myshopify.com
 
 # Run Theme Check linter
 shopify theme check
 
 # Push changes to a specific theme
-shopify theme push --store atelier-noir-fashion.myshopify.com --theme <THEME_ID>
+shopify theme push --store <your-store-handle>.myshopify.com --theme <THEME_ID>
 ```
 
 ---
