@@ -19,6 +19,72 @@ if (!customElements.get('media-gallery')) {
             .addEventListener('click', this.setActiveMedia.bind(this, mediaToSwitch.dataset.target, false));
         });
         if (this.dataset.desktopLayout.includes('thumbnail') && this.mql.matches) this.removeListSemantic();
+
+        this.initArrowNavigation();
+      }
+
+      initArrowNavigation() {
+        const prevButtons = this.querySelectorAll('.slider-button--prev');
+        const nextButtons = this.querySelectorAll('.slider-button--next');
+
+        const onArrowClick = (direction, event) => {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          this.navigateMedia(direction);
+        };
+
+        prevButtons.forEach((btn) => {
+          btn.addEventListener('click', onArrowClick.bind(this, -1));
+          btn.removeAttribute('disabled');
+        });
+
+        nextButtons.forEach((btn) => {
+          btn.addEventListener('click', onArrowClick.bind(this, 1));
+          btn.removeAttribute('disabled');
+        });
+
+        // Ensure buttons stay active and not disabled by parent SliderComponent
+        if (window.MutationObserver) {
+          const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              if (mutation.type === 'attributes' && mutation.attributeName === 'disabled') {
+                if (mutation.target.hasAttribute('disabled')) {
+                  mutation.target.removeAttribute('disabled');
+                }
+              }
+            });
+          });
+          prevButtons.forEach((btn) => observer.observe(btn, { attributes: true, attributeFilter: ['disabled'] }));
+          nextButtons.forEach((btn) => observer.observe(btn, { attributes: true, attributeFilter: ['disabled'] }));
+        }
+      }
+
+      navigateMedia(direction) {
+        if (!this.elements.thumbnails) return;
+        const thumbnailItems = Array.from(this.elements.thumbnails.querySelectorAll('[data-target]'));
+        if (thumbnailItems.length === 0) return;
+
+        const currentActiveIndex = thumbnailItems.findIndex((item) => {
+          const btn = item.querySelector('button');
+          return btn && btn.getAttribute('aria-current') === 'true';
+        });
+
+        let nextIndex;
+        if (currentActiveIndex === -1) {
+          nextIndex = direction > 0 ? 0 : thumbnailItems.length - 1;
+        } else {
+          nextIndex = currentActiveIndex + direction;
+          if (nextIndex < 0) {
+            nextIndex = thumbnailItems.length - 1;
+          } else if (nextIndex >= thumbnailItems.length) {
+            nextIndex = 0;
+          }
+        }
+
+        const targetItem = thumbnailItems[nextIndex];
+        if (targetItem && targetItem.dataset.target) {
+          this.setActiveMedia(targetItem.dataset.target, false);
+        }
       }
 
       onSlideChanged(event) {
@@ -54,7 +120,7 @@ if (!customElements.get('media-gallery')) {
         this.preventStickyHeader();
         window.setTimeout(() => {
           if (!this.mql.matches || this.elements.thumbnails) {
-            activeMedia.parentElement.scrollTo({ left: activeMedia.offsetLeft });
+            activeMedia.parentElement.scrollTo({ left: activeMedia.offsetLeft, behavior: 'smooth' });
           }
           const activeMediaRect = activeMedia.getBoundingClientRect();
           // Don't scroll if the image is already in view
@@ -79,7 +145,7 @@ if (!customElements.get('media-gallery')) {
         thumbnail.querySelector('button').setAttribute('aria-current', true);
         if (this.elements.thumbnails.isSlideVisible(thumbnail, 10)) return;
 
-        this.elements.thumbnails.slider.scrollTo({ left: thumbnail.offsetLeft });
+        this.elements.thumbnails.slider.scrollTo({ left: thumbnail.offsetLeft, behavior: 'smooth' });
       }
 
       announceLiveRegion(activeItem, position) {
