@@ -8,6 +8,41 @@ A custom, high-performance Shopify Online Store 2.0 theme crafted for contempora
 
 ---
 
+## Visual Previews
+
+### 1. Homepage & Curated Fashion Showcase
+![Homepage Hero](docs/screenshots/01-homepage-hero.png)
+
+*Curated Collection Showcase with 1-click Quick Add & secondary image hover preview:*
+![Curated Wardrobe Grid](docs/screenshots/02-curated-showcase.png)
+
+*Editorial Runway Lookbook (Split-view ensemble garment breakdown):*
+![Editorial Spotlight](docs/screenshots/03-editorial-lookbook.png)
+
+---
+
+### 2. Product Detail Page (PDP)
+*Custom 600px width media gallery with circular arrow navigation and centered thumbnail slider:*
+![Product Detail Page](docs/screenshots/04-product-detail-page.png)
+
+*Interactive Size Guide modal with instant Centimeters (CM) / Inches (IN) conversion:*
+![Interactive Size Guide Modal](docs/screenshots/05-size-guide-modal.png)
+
+---
+
+### 3. High-Conversion Cart Drawer
+*AJAX Cart Drawer with real-time dynamic Free Shipping meter ($150 goal) and instant line-item controls:*
+![AJAX Cart Drawer](docs/screenshots/06-cart-drawer.png)
+
+---
+
+### 4. Storytelling & Concierge Pages
+| Brand Manifesto (`/pages/about`) | Client Concierge (`/pages/contact`) |
+| :---: | :---: |
+| ![Brand Manifesto](docs/screenshots/07-brand-manifesto.png) | ![Client Concierge](docs/screenshots/08-client-concierge.png) |
+
+---
+
 ## Why this project?
 
 Most Shopify fashion stores suffer from performance degradation and high recurring costs because they rely on third-party apps for basic features: shipping calculators, size guides, product swatches, lookbooks, and sticky cart bars. Each app injects external scripts, stylesheets, and tracking pixels that drag down PageSpeed and introduce layout shifts (CLS).
@@ -68,6 +103,8 @@ Most Shopify fashion stores suffer from performance degradation and high recurri
 ├── config/
 │   ├── settings_data.json         # Typography, colors & default configuration
 │   └── settings_schema.json       # Custom theme settings (cart threshold, etc.)
+├── docs/
+│   └── screenshots/               # High-resolution desktop storefront previews
 ├── layout/
 │   ├── theme.liquid               # Global HTML document shell
 │   └── password.liquid            # Coming soon / password protection page

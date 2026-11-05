@@ -10,6 +10,7 @@
     "check": "shopify theme check"
   },
   "devDependencies": {
-    "@shopify/cli": "latest"
+    "@shopify/cli": "latest",
+    "puppeteer-core": "^25.16.0"
   }
 }
