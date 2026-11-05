@@ -1501,6 +1501,9 @@ a.product__text {
 .product__media-wrapper .product__modal-opener,
 .product__media-wrapper .media {
   aspect-ratio: 3 / 4 !important;
+  max-width: 600px !important;
+  max-height: 800px !important;
+  margin: 0 auto !important;
   background-color: #f8f8f8 !important;
   border-radius: 4px !important;
   overflow: hidden !important;
@@ -1580,6 +1583,9 @@ a.product__text {
   /* Desktop Thumbnail Bar */
   .product--thumbnail_slider .thumbnail-slider {
     margin-top: 1.8rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 600px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1702,8 +1708,11 @@ a.product__text {
     transform: rotate(-90deg) !important;
   }
 
-  /* Arrow Buttons Hover State - High Contrast Luxury Perfection */
-  .product--thumbnail_slider .thumbnail-slider .slider-button:hover {
+  /* Arrow Buttons Hover, Focus, Active State - High Contrast Luxury Perfection */
+  .product--thumbnail_slider .thumbnail-slider .slider-button:hover,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:focus,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:focus-visible,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:active {
     background: #121212 !important;
     color: #ffffff !important;
     border-color: #121212 !important;
@@ -1713,7 +1722,16 @@ a.product__text {
 
   .product--thumbnail_slider .thumbnail-slider .slider-button:hover svg,
   .product--thumbnail_slider .thumbnail-slider .slider-button:hover .icon,
-  .product--thumbnail_slider .thumbnail-slider .slider-button:hover svg path {
+  .product--thumbnail_slider .thumbnail-slider .slider-button:hover path,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:hover svg path,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:focus svg,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:focus .icon,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:focus path,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:focus svg path,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:active svg,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:active .icon,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:active path,
+  .product--thumbnail_slider .thumbnail-slider .slider-button:active svg path {
     color: #ffffff !important;
     fill: #ffffff !important;
     stroke: none !important;
@@ -1797,6 +1815,9 @@ a.product__text {
   .product__media-wrapper .product__modal-opener,
   .product__media-wrapper .media {
     aspect-ratio: 3 / 4 !important;
+    max-height: 380px !important;
+    max-width: 290px !important;
+    margin: 0 auto !important;
     border-radius: 6px !important;
     overflow: hidden !important;
     background-color: #f7f7f7 !important;
@@ -1853,7 +1874,10 @@ a.product__text {
     transition: all 0.2s ease !important;
   }
 
-  .product__media-wrapper .slider-button:hover {
+  .product__media-wrapper .slider-button:hover,
+  .product__media-wrapper .slider-button:focus,
+  .product__media-wrapper .slider-button:focus-visible,
+  .product__media-wrapper .slider-button:active {
     background: #121212 !important;
     color: #ffffff !important;
     border-color: #121212 !important;
@@ -1862,7 +1886,16 @@ a.product__text {
 
   .product__media-wrapper .slider-button:hover svg,
   .product__media-wrapper .slider-button:hover .icon,
-  .product__media-wrapper .slider-button:hover svg path {
+  .product__media-wrapper .slider-button:hover path,
+  .product__media-wrapper .slider-button:hover svg path,
+  .product__media-wrapper .slider-button:focus svg,
+  .product__media-wrapper .slider-button:focus .icon,
+  .product__media-wrapper .slider-button:focus path,
+  .product__media-wrapper .slider-button:focus svg path,
+  .product__media-wrapper .slider-button:active svg,
+  .product__media-wrapper .slider-button:active .icon,
+  .product__media-wrapper .slider-button:active path,
+  .product__media-wrapper .slider-button:active svg path {
     color: #ffffff !important;
     fill: #ffffff !important;
     stroke: none !important;

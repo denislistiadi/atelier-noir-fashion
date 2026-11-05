@@ -128,7 +128,7 @@
     <div class="slider-buttons quick-add-hidden{% if hide_mobile_slider %} small-hide{% endif %}">
       <button
         type="button"
-        class="slider-button slider-button--prev"
+        class="slider-button slider-button--prev{% if media_count <= 1 %} hidden{% endif %}"
         name="previous"
         aria-label="{{ 'general.slider.previous_slide' | t }}"
       >
@@ -144,7 +144,7 @@
       </div>
       <button
         type="button"
-        class="slider-button slider-button--next"
+        class="slider-button slider-button--next{% if media_count <= 1 %} hidden{% endif %}"
         name="next"
         aria-label="{{ 'general.slider.next_slide' | t }}"
       >
@@ -187,11 +187,11 @@
     >
       <button
         type="button"
-        class="slider-button slider-button--prev{% if media_count <= 3 %} small-hide{% endif %}{% if media_count <= 4 %} medium-hide large-up-hide{% endif %}"
+        class="slider-button slider-button--prev{% if media_count <= 1 %} hidden{% endif %}"
         name="previous"
         aria-label="{{ 'general.slider.previous_slide' | t }}"
         aria-controls="GalleryThumbnails-{{ section.id }}"
-        data-step="3"
+        data-step="1"
       >
         <span class="svg-wrapper">
           {{- 'icon-caret.svg' | inline_asset_content -}}
@@ -231,6 +231,7 @@
               Thumbnail-{{ section.id }}-0
             {%- endcapture -%}
             <button
+              type="button"
               class="thumbnail global-media-settings global-media-settings--no-shadow"
               aria-label="{%- if featured_media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif featured_media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif featured_media.media_type == 'video' or featured_media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
               aria-current="true"
@@ -288,7 +289,8 @@
                 Thumbnail-{{ section.id }}-{{ forloop.index }}
               {%- endcapture -%}
               <button
-                class="thumbnail global-media-settings global-media-settings--no-shadow"
+              type="button"
+              class="thumbnail global-media-settings global-media-settings--no-shadow"
                 aria-label="{%- if media.media_type == 'image' -%}{{ 'products.product.media.load_image' | t: index: media_index }}{%- elsif media.media_type == 'model' -%}{{ 'products.product.media.load_model' | t: index: media_index }}{%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}{{ 'products.product.media.load_video' | t: index: media_index }}{%- endif -%}"
                 {% if media == product.selected_or_first_available_variant.featured_media
                   or product.selected_or_first_available_variant.featured_media == null
@@ -317,11 +319,11 @@
       </ul>
       <button
         type="button"
-        class="slider-button slider-button--next{% if media_count <= 3 %} small-hide{% endif %}{% if media_count <= 4 %} medium-hide large-up-hide{% endif %}"
+        class="slider-button slider-button--next{% if media_count <= 1 %} hidden{% endif %}"
         name="next"
         aria-label="{{ 'general.slider.next_slide' | t }}"
         aria-controls="GalleryThumbnails-{{ section.id }}"
-        data-step="3"
+        data-step="1"
       >
         <span class="svg-wrapper">
           {{- 'icon-caret.svg' | inline_asset_content -}}

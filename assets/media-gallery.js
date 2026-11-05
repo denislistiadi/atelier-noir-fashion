@@ -14,9 +14,14 @@ if (!customElements.get('media-gallery')) {
 
         this.elements.viewer.addEventListener('slideChanged', debounce(this.onSlideChanged.bind(this), 500));
         this.elements.thumbnails.querySelectorAll('[data-target]').forEach((mediaToSwitch) => {
-          mediaToSwitch
-            .querySelector('button')
-            .addEventListener('click', this.setActiveMedia.bind(this, mediaToSwitch.dataset.target, false));
+          const btn = mediaToSwitch.querySelector('button');
+          if (btn) {
+            btn.addEventListener('click', (event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              this.setActiveMedia(mediaToSwitch.dataset.target, false);
+            });
+          }
         });
         if (this.dataset.desktopLayout.includes('thumbnail') && this.mql.matches) this.removeListSemantic();
 
@@ -122,11 +127,13 @@ if (!customElements.get('media-gallery')) {
           if (!this.mql.matches || this.elements.thumbnails) {
             activeMedia.parentElement.scrollTo({ left: activeMedia.offsetLeft, behavior: 'smooth' });
           }
-          const activeMediaRect = activeMedia.getBoundingClientRect();
-          // Don't scroll if the image is already in view
-          if (activeMediaRect.top > -0.5) return;
-          const top = activeMediaRect.top + window.scrollY;
-          window.scrollTo({ top: top, behavior: 'smooth' });
+          // Only scroll page if in desktop stacked layout, NEVER on thumbnail sliders or mobile carousels
+          if (this.mql.matches && this.dataset.desktopLayout && !this.dataset.desktopLayout.includes('thumbnail')) {
+            const activeMediaRect = activeMedia.getBoundingClientRect();
+            if (activeMediaRect.top > -0.5) return;
+            const top = activeMediaRect.top + window.scrollY;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
         });
         this.playActiveMedia(activeMedia);
 
